@@ -5,6 +5,10 @@ on:
     branches:
       - production
       - staging
+  pull_request:
+    branches:
+      - production
+      - staging
 
 jobs:
   build:
