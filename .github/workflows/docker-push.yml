@@ -3,7 +3,8 @@ name: Docker Build and Push
 on:
   push:
     branches:
-      - main
+      - production
+      - staging
 
 jobs:
   build:
@@ -11,7 +12,7 @@ jobs:
     permissions:
       id-token: write
       contents: read
-    environment: production
+    environment: ${{ github.head_ref }}
     steps:
       - uses: actions/checkout@v4.1.1
       - name: Configure AWS credentials
