@@ -12,7 +12,7 @@ jobs:
     permissions:
       id-token: write
       contents: read
-    environment: ${{ github.base_ref }}
+    environment: ${{ github.ref_name }}
     steps:
       - uses: actions/checkout@v4.1.1
       - name: Configure AWS credentials
