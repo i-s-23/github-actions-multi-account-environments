@@ -1,4 +1,4 @@
-name: Docker Build and Push to Multi Account
+name: S3 file upload with Push torriger to Multi Account
 
 on:
   push:
