@@ -1,0 +1,28 @@
+name: S3 file upload with Push torriger to Multi Account
+
+on:
+  push:
+    branches:
+      - production
+      - staging
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+    environment: ${{ github.ref_name }}
+    steps:
+      - uses: actions/checkout@v4.1.1
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4.0.2
+        with:
+          role-to-assume: ${{ secrets.AWS_IAM_ROLE_ARN }}
+          aws-region: ${{ vars.AWS_REGION }}
+      - name: Check Bucket Name
+        run: |
+          aws s3 ls
+      - name: Copy files to S3
+        run: |
+          aws s3 cp upload-test.txt s3://${{vars.AWS_S3_BUCKET}}/
