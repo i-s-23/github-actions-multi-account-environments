@@ -1,7 +1,7 @@
-name: Docker Build and Push to Multi Account
+name: S3 file upload with PullRequest Create torriger to Multi Account
 
 on:
-  push:
+  pull_request:
     branches:
       - production
       - staging
@@ -12,7 +12,7 @@ jobs:
     permissions:
       id-token: write
       contents: read
-    environment: ${{ github.ref_name }}
+    environment: ${{ github.base_ref }}
     steps:
       - uses: actions/checkout@v4.1.1
       - name: Configure AWS credentials
@@ -26,3 +26,4 @@ jobs:
       - name: Copy files to S3
         run: |
           aws s3 cp upload-test.txt s3://${{vars.AWS_S3_BUCKET}}/
+        
