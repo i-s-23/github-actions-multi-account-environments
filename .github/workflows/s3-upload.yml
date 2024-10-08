@@ -14,7 +14,7 @@ jobs:
       contents: read
     environment: ${{ github.ref_name }}
     steps:
-      - uses: actions/checkout@v4.1.7
+      - uses: actions/checkout@v4.2.1
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4.0.2
         with:
