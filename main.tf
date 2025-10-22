@@ -1,6 +1,6 @@
 module "s3_bucket" {
   source  = "terraform-aws-modules/s3-bucket/aws"
-  version = "5.8.1"
+  version = "5.8.2"
 
   bucket = var.s3_bucket_name
 
