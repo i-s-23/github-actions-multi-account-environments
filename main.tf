@@ -46,7 +46,7 @@ resource "aws_iam_policy" "s3_push_policy" {
 # OIDCを利用してGithubActionsがAWSリソースにアクセスできるようにする
 module "oidc_github" {
   source  = "unfunco/oidc-github/aws"
-  version = "2.0.2"
+  version = "3.0.0"
 
   github_repositories = [
     "${var.github_organization}/${var.github_repository}"
